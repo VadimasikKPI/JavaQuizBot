@@ -1,6 +1,7 @@
 package com.example.telegrambot.service;
 
 import com.example.telegrambot.config.BotConfiguration;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -10,7 +11,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.time.LocalDate;
 
-
+@Slf4j
 @Component
 public class TelegramBot extends TelegramLongPollingBot {
 
@@ -42,11 +43,11 @@ public class TelegramBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         message.setChatId(String.valueOf(chatId));
         message.setText(text);
-
+        log.info("Send message to " + chatId + " text - " + text);
         try {
             execute(message);
         } catch (TelegramApiException e) {
-            System.out.println("ERROR1");
+            log.error("Error occurred in sendMessage function - " + e);
         }
     }
 

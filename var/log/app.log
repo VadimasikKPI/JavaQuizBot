@@ -1,0 +1,13 @@
+2023-04-12 14:47:57,065 INFO c.e.t.TelegrambotApplication [main] Starting TelegrambotApplication using Java 17.0.2 with PID 18664 (D:\Projects\Telegram bot\telegrambot\target\classes started by Vadimas in D:\Projects\Telegram bot\telegrambot)
+2023-04-12 14:47:57,072 INFO c.e.t.TelegrambotApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-04-12 14:47:58,975 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2023-04-12 14:47:58,996 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2023-04-12 14:47:58,997 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2023-04-12 14:47:58,997 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-04-12 14:47:59,204 INFO o.a.c.c.C.[.[.[/] [main] Initializing Spring embedded WebApplicationContext
+2023-04-12 14:47:59,204 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1963 ms
+2023-04-12 14:48:00,233 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2023-04-12 14:48:00,289 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-12 14:48:01,255 INFO c.e.t.TelegrambotApplication [main] Started TelegrambotApplication in 4.905 seconds (process running for 6.458)
+2023-04-12 14:48:02,126 INFO c.e.t.s.TelegramBot [java_dev_quiz_bot Telegram Executor] Send message to 797947018 text - Hello, i am a simple bot, you can write me any message and i will return it to you)
+2023-04-12 14:48:15,937 INFO c.e.t.s.TelegramBot [java_dev_quiz_bot Telegram Executor] Send message to 797947018 text - gfdgfdg
