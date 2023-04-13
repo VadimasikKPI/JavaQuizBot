@@ -52,7 +52,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                     startCommand(chatId);
                 break;}
                 case "/quiz":{
-                    startQuiz(chatId);
+                    startQuiz(chatId, update);
                     break;
                 }
                 default:sendMessage(chatId, message);
@@ -60,36 +60,54 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    private void startQuiz(Long chatId) {
+    private void startQuiz(Long chatId, Update update) {
         SendMessage message = new SendMessage();
         message.setChatId(String.valueOf(chatId));
-        message.setText("Question 1");
+        boolean isEnd = false;
 
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
-        List<InlineKeyboardButton> row = new ArrayList<>();
-        InlineKeyboardButton yesButton = new InlineKeyboardButton();
+        while(!isEnd){
+            for(int i = 1; i<13;i++){
+                log.info("Give user question " + i);
+                message.setText("Question " + i);
 
-        yesButton.setText("Yes");
-        yesButton.setCallbackData("YES_BTN");
+                InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+                List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+                List<InlineKeyboardButton> row = new ArrayList<>();
+                InlineKeyboardButton yesButton = new InlineKeyboardButton();
 
-        InlineKeyboardButton noButton = new InlineKeyboardButton();
-        noButton.setText("No");
-        noButton.setCallbackData("NO_BTN");
+                yesButton.setText("Yes");
+                yesButton.setCallbackData("YES_BTN");
 
-        row.add(yesButton);
-        row.add(noButton);
-        rows.add(row);
+                InlineKeyboardButton noButton = new InlineKeyboardButton();
+                noButton.setText("No");
+                noButton.setCallbackData("NO_BTN");
 
-        markup.setKeyboard(rows);
+                row.add(yesButton);
+                row.add(noButton);
+                rows.add(row);
 
-        message.setReplyMarkup(markup);
+                markup.setKeyboard(rows);
 
-        try{
-            this.execute(message);
-        } catch (TelegramApiException e) {
-            log.error("Error occurred in sendMessage function - " + e);
+                message.setReplyMarkup(markup);
+
+                try{
+                    this.execute(message);
+                } catch (TelegramApiException e) {
+                    log.error("Error occurred in sendMessage function - " + e);
+                }
+                if(update.hasCallbackQuery()){
+                    continue;
+                }
+                else {
+
+                }
+
+            }
+            isEnd = true;
+            log.info("End game for user " + chatId);
+
         }
+
 
     }
 
@@ -111,6 +129,8 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         }
     }
+
+
 
     @Override
     public String getBotUsername() {
